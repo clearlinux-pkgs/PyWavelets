@@ -4,12 +4,13 @@
 #
 Name     : PyWavelets
 Version  : 0.5.2
-Release  : 3
-URL      : https://pypi.python.org/packages/4b/df/3fff2a8b96ef7df6e4e8642fb7569c3717ae562dd76afe0f96525c0af784/PyWavelets-0.5.2.tar.gz
-Source0  : https://pypi.python.org/packages/4b/df/3fff2a8b96ef7df6e4e8642fb7569c3717ae562dd76afe0f96525c0af784/PyWavelets-0.5.2.tar.gz
+Release  : 4
+URL      : http://pypi.debian.net/PyWavelets/PyWavelets-0.5.2.tar.gz
+Source0  : http://pypi.debian.net/PyWavelets/PyWavelets-0.5.2.tar.gz
 Summary  : PyWavelets, wavelet transform module
 Group    : Development/Tools
 License  : MIT
+Requires: PyWavelets-python3
 Requires: PyWavelets-python
 Requires: Cython
 Requires: nose
@@ -23,33 +24,43 @@ BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
-PyWavelets
-==========
-.. contents::
-What is PyWavelets
-------------------
-PyWavelets is a free Open Source library for wavelet transforms in Python.
-Wavelets are mathematical basis functions that are localized in both time and
-frequency.  Wavelet transforms are time-frequency transforms employing
-wavelets.  They are similar to Fourier transforms, the difference being that
-Fourier transforms are localized only in frequency instead of in time and
-frequency.
+* nD Forward and Inverse Discrete Wavelet Transform (DWT and IDWT)
+                * 1D and 2D Forward and Inverse Stationary Wavelet Transform (Undecimated Wavelet Transform)
+                * 1D and 2D Wavelet Packet decomposition and reconstruction
+                * 1D Continuous Wavelet Tranfsorm
+                * Computing Approximations of wavelet and scaling functions
+                * Over 100 built-in wavelet filters and support for custom wavelets
+                * Single and double precision calculations
+                * Results compatibility with Matlab Wavelet Toolbox (tm)
 
 %package python
 Summary: python components for the PyWavelets package.
 Group: Default
+Requires: PyWavelets-python3
 Provides: pywavelets-python
 
 %description python
 python components for the PyWavelets package.
 
 
+%package python3
+Summary: python3 components for the PyWavelets package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the PyWavelets package.
+
+
 %prep
 %setup -q -n PyWavelets-0.5.2
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1490905652
+export SOURCE_DATE_EPOCH=1507170718
 python3 setup.py build -b py3
 
 %install
@@ -63,5 +74,8 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*

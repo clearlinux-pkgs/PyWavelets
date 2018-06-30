@@ -4,7 +4,7 @@
 #
 Name     : PyWavelets
 Version  : 0.5.2
-Release  : 12
+Release  : 13
 URL      : http://pypi.debian.net/PyWavelets/PyWavelets-0.5.2.tar.gz
 Source0  : http://pypi.debian.net/PyWavelets/PyWavelets-0.5.2.tar.gz
 Summary  : PyWavelets, wavelet transform module
@@ -15,11 +15,12 @@ Requires: PyWavelets-python
 Requires: Cython
 Requires: nose
 Requires: numpy
+Requires: numpydoc
 Requires: wheel
+BuildRequires : Cython
 BuildRequires : numpy
 BuildRequires : pbr
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -60,7 +61,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507170718
+export SOURCE_DATE_EPOCH=1530378760
 python3 setup.py build -b py3
 
 %install

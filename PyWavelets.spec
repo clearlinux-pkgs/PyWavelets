@@ -4,7 +4,7 @@
 #
 Name     : PyWavelets
 Version  : 0.5.2
-Release  : 11
+Release  : 12
 URL      : http://pypi.debian.net/PyWavelets/PyWavelets-0.5.2.tar.gz
 Source0  : http://pypi.debian.net/PyWavelets/PyWavelets-0.5.2.tar.gz
 Summary  : PyWavelets, wavelet transform module

@@ -4,12 +4,13 @@
 #
 Name     : PyWavelets
 Version  : 1.1.1
-Release  : 24
+Release  : 25
 URL      : https://files.pythonhosted.org/packages/17/6b/ef989cfb3acff2ea966c5f28a7443ccaec2ee136675dfa0366db2635f78a/PyWavelets-1.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/17/6b/ef989cfb3acff2ea966c5f28a7443ccaec2ee136675dfa0366db2635f78a/PyWavelets-1.1.1.tar.gz
 Summary  : PyWavelets, wavelet transform module
 Group    : Development/Tools
 License  : MIT
+Requires: PyWavelets-license = %{version}-%{release}
 Requires: PyWavelets-python = %{version}-%{release}
 Requires: PyWavelets-python3 = %{version}-%{release}
 Requires: Cython
@@ -35,6 +36,14 @@ BuildRequires : wheel
 | Read the Docs | |read_the_docs| |
 +---------------+-----------------+
 
+%package license
+Summary: license components for the PyWavelets package.
+Group: Default
+
+%description license
+license components for the PyWavelets package.
+
+
 %package python
 Summary: python components for the PyWavelets package.
 Group: Default
@@ -49,6 +58,7 @@ python components for the PyWavelets package.
 Summary: python3 components for the PyWavelets package.
 Group: Default
 Requires: python3-core
+Provides: pypi(PyWavelets)
 
 %description python3
 python3 components for the PyWavelets package.
@@ -56,13 +66,14 @@ python3 components for the PyWavelets package.
 
 %prep
 %setup -q -n PyWavelets-1.1.1
+cd %{_builddir}/PyWavelets-1.1.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571499414
+export SOURCE_DATE_EPOCH=1583217338
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -78,6 +89,8 @@ python3 setup.py build
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/PyWavelets
+cp %{_builddir}/PyWavelets-1.1.1/LICENSE %{buildroot}/usr/share/package-licenses/PyWavelets/ee2da39132c285da4731863fcfafc9c48e1ee6c4
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -85,6 +98,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/PyWavelets/ee2da39132c285da4731863fcfafc9c48e1ee6c4
 
 %files python
 %defattr(-,root,root,-)

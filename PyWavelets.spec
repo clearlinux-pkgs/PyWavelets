@@ -4,7 +4,7 @@
 #
 Name     : PyWavelets
 Version  : 1.1.1
-Release  : 25
+Release  : 26
 URL      : https://files.pythonhosted.org/packages/17/6b/ef989cfb3acff2ea966c5f28a7443ccaec2ee136675dfa0366db2635f78a/PyWavelets-1.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/17/6b/ef989cfb3acff2ea966c5f28a7443ccaec2ee136675dfa0366db2635f78a/PyWavelets-1.1.1.tar.gz
 Summary  : PyWavelets, wavelet transform module
@@ -26,15 +26,15 @@ BuildRequires : numpydoc
 BuildRequires : wheel
 
 %description
-+---------------+-----------------+
-| Service       | Master branch   |
-+===============+=================+
-| Travis        | |travis_ci|     |
-+---------------+-----------------+
-| Appveyor      | |appveyor_ci|   |
-+---------------+-----------------+
-| Read the Docs | |read_the_docs| |
-+---------------+-----------------+
+* nD Forward and Inverse Discrete Wavelet Transform (DWT and IDWT)
+                * 1D and 2D Forward and Inverse Stationary Wavelet Transform (Undecimated Wavelet Transform)
+                * 1D and 2D Wavelet Packet decomposition and reconstruction
+                * 1D Continuous Wavelet Tranfsorm
+                * Computing Approximations of wavelet and scaling functions
+                * Over 100 built-in wavelet filters and support for custom wavelets
+                * Single and double precision calculations
+                * Real and complex calculations
+                * Results compatible with Matlab Wavelet Toolbox (TM)
 
 %package license
 Summary: license components for the PyWavelets package.
@@ -58,7 +58,8 @@ python components for the PyWavelets package.
 Summary: python3 components for the PyWavelets package.
 Group: Default
 Requires: python3-core
-Provides: pypi(PyWavelets)
+Provides: pypi(pywavelets)
+Requires: pypi(numpy)
 
 %description python3
 python3 components for the PyWavelets package.
@@ -73,8 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583217338
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583522707
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

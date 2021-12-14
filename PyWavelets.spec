@@ -4,7 +4,7 @@
 #
 Name     : PyWavelets
 Version  : 1.2.0
-Release  : 41
+Release  : 42
 URL      : https://files.pythonhosted.org/packages/35/e9/decd467448cde227aad94ff2976046afd3a51ad461ba9a325840687e8836/PyWavelets-1.2.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/35/e9/decd467448cde227aad94ff2976046afd3a51ad461ba9a325840687e8836/PyWavelets-1.2.0.tar.gz
 Summary  : PyWavelets, wavelet transform module
